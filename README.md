@@ -1,26 +1,31 @@
 # Indeed Python Job Scraper
 
-A clean **Playwright-based Python scraper** that extracts **Python Developer jobs** from Indeed and exports them to CSV.
+Playwright-based scraper that extracts **Python Developer jobs** from Indeed and exports them to clean CSV + Excel.
+
+**Author:** [Ahmad Raza](https://github.com/ahmadraza-automation)
+
+> **Important:** Indeed frequently changes its HTML structure and uses aggressive anti-bot protection. This project is for educational / personal learning purposes. Always respect Indeed’s Terms of Service and robots.txt.
+
+---
 
 ## Features
 
-- Full job details extraction (Title, Company, Location, Description, Link)
-- Automatic pagination handling
-- Clean CSV export
-- Simple and maintainable code structure
+- Async Playwright for reliable browser automation
+- Multi-page scraping (configurable limit)
+- Stealth techniques (webdriver flag removed)
+- Clean CSV + professionally formatted Excel export
+- Duplicate removal by URL
 
-## Tech Stack
-
-- Python 3
-- Playwright (async)
-- Pandas
+---
 
 ## Installation
 
 ```bash
-pip install playwright pandas
+pip install -r requirements.txt
 playwright install chromium
 ```
+
+---
 
 ## Usage
 
@@ -28,7 +33,32 @@ playwright install chromium
 python indeed_scraper.py
 ```
 
-Output will be saved as a CSV file with all scraped jobs.
+### Configuration (top of script)
+
+| Setting     | Default | Description                    |
+|-------------|---------|--------------------------------|
+| `HEADLESS`  | `True`  | Set `False` to see the browser |
+| `MAX_PAGES` | `3`     | Safety limit on pages          |
+
+---
+
+## Output
+
+```
+output/
+├── indeed_python_jobs.csv
+└── indeed_python_jobs.xlsx
+```
+
+---
+
+## Notes
+
+- Selectors may break when Indeed updates their frontend. Update the locator strings in the script if needed.
+- For production use consider proxies / residential IPs and slower delays.
+- LinkedIn / Indeed style scrapers that require login are intentionally kept simple for safety.
+
+---
 
 ## Author
 
